@@ -1,1 +1,1 @@
-# idea-board
+# idea-boardgi
