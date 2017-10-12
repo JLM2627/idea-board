@@ -10,19 +10,19 @@ class SignUpForm extends Component {
     }
 
 
-    handleChange = (event) =>{
-        const attribute =event.target.name
-        const updateUser = {...this.state.newUser}
-        updateUser[attribute] =event.target.value
-        this.setState({newUser: updateUser})
+    handleChange = (event) => {
+        const attribute = event.target.name
+        const updateUser = { ...this.state.newUser }
+        updateUser[attribute] = event.target.value
+        this.setState({ newUser: updateUser })
     }
 
     handleSubmit = async (event) => {
         event.preventDefault()
-      const res = await  axios.post('/api/users', {
+        const res = await axios.post('/api/users', {
             'user': this.state.newUser
         })
-         console.log(res.data)   
+        console.log(res.data)
 
     }
 
@@ -30,14 +30,14 @@ class SignUpForm extends Component {
         return (
             <div>
                 <h1>Sign-Up</h1>
-                <form onSubmit ={this.handleSubmit}>
+                <form onSubmit={this.handleSubmit}>
                     <div>
                         <label htmlFor="userName">User Name</label>
-                        <input onChange={this.handleChange} name="userName" type="text" value={this.state.newUser.userName}/>
+                        <input onChange={this.handleChange} name="userName" type="text" value={this.state.newUser.userName} />
                     </div>
                     <div>
                         <label htmlFor="password">Password</label>
-                        <input onChange={this.handleChange} name= "password" type="text" value={this.state.newUser.password}/>
+                        <input onChange={this.handleChange} name="password" type="text" value={this.state.newUser.password} />
                     </div>
                     <button>Sign Up</button>
                 </form>

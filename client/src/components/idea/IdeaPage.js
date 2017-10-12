@@ -1,13 +1,36 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import axios from 'axios'
+import styled from 'styled-components'
 
 class IdeaPage extends Component {
-    render() {
-        return (
-            <div>
-               <h1>Hey this is Idea Page</h1> 
-            </div>
-        );
+  state={
+    user: {
+      userName: '',
+      password: '',
+      ideas: []
     }
-}
+  }
 
-export default IdeaPage;
+  async componentWillMount () {
+    const { userId } = this.props.match.params
+    const res = await axios.get(`/api/users/${userId}`)
+    this.setState({user: res.data})
+  }
+
+  render () {
+    return (
+      <div>
+        <h1>{this.state.user.userName}'s Idea Board</h1>
+        {this.state.user.ideas.map((idea) => {
+          return (
+            <div key={idea._id}>
+              <h3>{idea.title}</h3>
+              <p>{idea.description}</p>
+            </div>
+          )
+        })}
+      </div>
+    )
+  }
+}
+export default IdeaPage

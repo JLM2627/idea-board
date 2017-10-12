@@ -7,29 +7,29 @@ const IdeaSchema = new Schema ({
     title: {
         type: String,
         default: 'New Title',
-        required: true,
-        unique: true
+        // required: true,
+        // unique: true
     },
     description: {
         type: String,
-        required: true
+        // required: true
     },
     createdAt: {
         type: Date,
         default: Date.now,
-        required: true
+        // required: true
     }
 })
 
 const UserSchema = new Schema ({
     userName: {
         type: String,
-        required: true
+        // required: true
       },
 
     password:{
         type: String,
-        required: true
+        // required: true
 
     },
     
